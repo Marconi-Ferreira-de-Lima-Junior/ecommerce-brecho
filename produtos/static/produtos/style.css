@@ -1,58 +1,77 @@
-/* === ESTILOS GERAIS === */
-/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Poppins:wght@300;400;500;600&display=swap'); */
+/*IMPORTAÇÃO DE FONTE*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
 
 
+/* Geral*/
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #fdf0f5;
-    color: #343a40;
+    font-family: 'Outfit', sans-serif; /*Definindo a fonte*/
+    margin: 0;/*removendo margens padrao do navegador*/
+    padding: 20px;/*limitando a distancia do elemnto com a borda*/
+    background-color: #fdf0f5;/*cor do fundo*/
+    color: #343a40;/*cor do texto*/
 }
 
+h1, h2 {
+    font-family: 'Outfit', sans-serif; /*definindo a fonte do h1 e h2*/
+    font-weight: 900;/*tamanho da fonte*/
+    color: #b45d7a;/*cor*/
+    margin: 0;/*sem margem - margem 0*/
+    text-align: center;/*alinhamento com o centro da página*/
+}
 
-/* === BANNER (SOLUÇÃO DEFINITIVA) === */
+h1 {
+    font-size: 3.2rem; /*Tamanho da fonte*/
+    margin-bottom: 50px; /*Espaço entre o texto e o elemento abaixo*/
+    background: linear-gradient(to right, #b45d7a, #e89cae);/*Gera um gradiente da esquerda para direita*/ 
+    background-clip: text; /*O gradiente vai aparecer somente onde tem texto */ 
+    text-emphasis-color: transparent;
+}
+
+/*BANNER (MODELOS + LOGO CENTRAL)*/
 .banner-completo {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 45px;
     margin: 0 auto 30px;
     width: 100%;
-    max-width: 800px;
+    max-width: none;
     flex-wrap: wrap;
 }
 
-/* Container que FORÇA o tamanho igual */
 .banner-img, .logo-central {
-    width: 200px; /* Largura fixa */
-    height: 200px; /* Altura fixa */
+    width: 200px;
+    height: 200px;
     border-radius: 10px;
-    overflow: hidden; /* Corta o que ultrapassar */
-    position: relative; /* Permite posicionamento absoluto interno */
-    box-shadow: 0 4px 12px rgba(0, 0,  ​0, 0.1);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border: 1px solid #f5c2d7;
-    background: white; /* Fundo para áreas transparentes */
+    background: white;
 }
 
-/* Regra mágica para as imagens */
 .banner-img img, .logo-central img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Preenche cortando o excesso */
-    object-position: center; /* Foco no centro */
+    object-fit: cover;
+    object-position: center;
 }
 
-/* Ajuste especial para o logo (sem corte) */
-.logo-central img {
-    object-fit: contain;
-    padding: 15px; /* Espaço interno */
+.logo-central {
+    width: 300px; 
+    height: 200px; 
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f5c2d7;
+    background: white;
 }
 
-/* === PRODUTOS (mantido seu estilo original) === */
+/*GALERIA DE PRODUTOS*/
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -63,25 +82,82 @@ body {
 .produto {
     background-color: #ffffff;
     border: 1px solid #f5c2d7;
-    border-radius: 12px;
+    border-radius: 8px;
     width: 300px;
     padding: 18px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ... (mantenha o resto do seu CSS original) ... */
+.produto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
 
-/* === RESPONSIVO === */
+.produto img {
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background-color: #fff; 
+    transition: transform 0.3s ease;
+}
+
+
+.produto:hover img {
+    transform: scale(1.03);
+}
+
+/*BOTÃO DE WHATSAPP*/
+.botao {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background-color: #48b74e;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.botao:hover {
+    background-color: #2bb146;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/*RESPONSIVO*/
 @media (max-width: 768px) {
-    .banner-img, .logo-central {
+    .banner-img {
         width: 150px;
         height: 150px;
+    }
+    .logo-central {
+        width: 250px;
+        height: 140px; 
+    }
+    .produto {
+        width: 90%;
     }
 }
 
 @media (max-width: 480px) {
-    .banner-img, .logo-central {
+    .banner-img {
         width: 120px;
         height: 120px;
+    }
+    .logo-central {
+        width: 200px;
+        height: 112px; 
+    }
+    .produto img {
+        aspect-ratio: 4 / 3;
     }
 }
