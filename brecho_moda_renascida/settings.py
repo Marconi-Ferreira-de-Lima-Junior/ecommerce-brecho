@@ -126,3 +126,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+#quando for colocar o site no ar 
+#DEBUG = False
+#ALLOWED_HOSTS = ['www.brechomodarenascida.com', 'brechomodarenascida.com', 'ip-ou-dominio-da-hospedagem']
+
+# import os
+# from pathlib import Path
+
+# BASE_DIR = Path(__file__).resolve().parent.parent
+
+# SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret')  # Nunca subir a chave real
+
+# DEBUG = os.getenv('DEBUG', 'True') == 'True'
+
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',') if not DEBUG else []
+
+# # ...
+
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Adicione isso para produção
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

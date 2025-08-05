@@ -1,38 +1,127 @@
-/*IMPORTAÇÃO DE FONTE*/
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
 
 
-/* Geral*/
+/* Geral */
 body {
-    font-family: 'Outfit', sans-serif; /*Definindo a fonte*/
-    margin: 0;/*removendo margens padrao do navegador*/
-    padding: 20px;/*limitando a distancia do elemnto com a borda*/
-    background-color: #fdf0f5;/*cor do fundo*/
-    color: #343a40;/*cor do texto*/
-}
-
-h1, h2 {
-    font-family: 'Outfit', sans-serif; /*definindo a fonte do h1 e h2*/
-    font-weight: 900;/*tamanho da fonte*/
-    color: #b45d7a;/*cor*/
-    margin: 0;/*sem margem - margem 0*/
-    text-align: center;/*alinhamento com o centro da página*/
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #fdf0f5;
+    color: #343a40;
 }
 
 h1 {
-    font-size: 3.2rem; /*Tamanho da fonte*/
-    margin-bottom: 50px; /*Espaço entre o texto e o elemento abaixo*/
-    background: linear-gradient(to right, #b45d7a, #e89cae);/*Gera um gradiente da esquerda para direita*/ 
-    background-clip: text; /*O gradiente vai aparecer somente onde tem texto */ 
+    font-size: 3.2rem;
+    margin-bottom: 50px;
+    background: linear-gradient(to right, #b45d7a, #e89cae);
+    background-clip: text;
     text-emphasis-color: transparent;
+    text-align: center;
+    font-weight: 200;
+    color: #b45d7a;
 }
 
-/*BANNER (MODELOS + LOGO CENTRAL)*/
+h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    color: #ab4d6d;
+    margin: 0;
+    text-align: center;
+}
+
+/* Topo: Contato + Mensagem + Busca */
+.topo-interacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Contato */
+.contato-bloco {
+    text-align: left;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* controla o espaçamento entre os elementos */
+}
+
+.contato-bloco .contato-titulo {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.contato-texto {
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: center;
+}
+
+.contato-bloco .botao {
+    width: fit-content; /* evita que o botão fique largo demais */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+/* Mensagem central */
+.mensagem-central {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    color: #b45d7a;
+    margin-top: 0px;
+}
+
+.mensagem-central p:first-child {
+    font-size: 1.6rem; /* maior destaque */
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.mensagem-central p:last-child {
+    font-size: 1.2rem;
+    margin-top: 0;
+    font-weight: 400;
+}
+
+
+/* Busca */
+.busca-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    max-width: 300px;
+}
+
+.busca-form input[type="text"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 180px;
+}
+
+/* Botão de busca*/
+.botao.busca {
+    background-color: #b45d7a;
+}
+
+.botao.busca:hover {
+    background-color: #913f5b;
+}
+
+/* Banner */
 .banner-completo {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 45px;
+    gap: 25px;
     margin: 0 auto 30px;
     width: 100%;
     max-width: none;
@@ -40,14 +129,18 @@ h1 {
 }
 
 .banner-img, .logo-central {
-    width: 200px;
+    width: 240px;
     height: 200px;
-    border-radius: 10px;
+    border-radius: 14px;
     overflow: hidden;
     position: relative;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border: 1px solid #f5c2d7;
     background: white;
+}
+
+.logo-central {
+    width: 360px;
 }
 
 .banner-img img, .logo-central img {
@@ -56,22 +149,17 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     object-position: center;
+    border-radius: 12px;     /* suaviza o corte visual */
+    transition: transform 0.3s ease;
+}
+.banner-img img:hover,
+.logo-central img:hover {
+    transform: scale(1.03);  /* zoom sutil ao passar o mouse */
 }
 
-.logo-central {
-    width: 300px; 
-    height: 200px; 
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #f5c2d7;
-    background: white;
-}
-
-/*GALERIA DE PRODUTOS*/
+/* Galeria */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -104,16 +192,15 @@ h1 {
     object-fit: contain;
     border-radius: 8px;
     margin-bottom: 12px;
-    background-color: #fff; 
+    background-color: #fff;
     transition: transform 0.3s ease;
 }
-
 
 .produto:hover img {
     transform: scale(1.03);
 }
 
-/*BOTÃO DE WHATSAPP*/
+/* Botões */
 .botao {
     display: inline-block;
     margin-top: 12px;
@@ -133,7 +220,7 @@ h1 {
     transform: translateY(-2px);
 }
 
-/*RESPONSIVO*/
+/* Responsivo */
 @media (max-width: 768px) {
     .banner-img {
         width: 150px;
@@ -141,10 +228,18 @@ h1 {
     }
     .logo-central {
         width: 250px;
-        height: 140px; 
+        height: 140px;
     }
     .produto {
         width: 90%;
+    }
+    .topo-interacao {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .busca-form {
+        justify-content: flex-start;
+        width: 100%;
     }
 }
 
@@ -155,7 +250,7 @@ h1 {
     }
     .logo-central {
         width: 200px;
-        height: 112px; 
+        height: 112px;
     }
     .produto img {
         aspect-ratio: 4 / 3;
