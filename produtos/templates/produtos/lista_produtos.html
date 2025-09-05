@@ -3,78 +3,89 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Brechó Moda Renascida</title>
     <link rel="stylesheet" href="{% static 'produtos/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- container principal -->
+    <div class="container-pagina"> <!--organização semantica (header - main - section) que vai envolver toda a pagina-->
 
-    <!-- Banner com modelos e logo central -->
-    <div class="banner-completo">
-        <div class="banner-img">
-            <img src="/media/modelo/smiling-brunette-girl-making-self-portrait-posing-pink-wall-send-kiss.jpg" alt="Modelo Extra 1">
-        </div>
-        <div class="banner-img">
-            <img src="/media/modelo/cheerful-young-woman-showing-peace-sign-with-smile-studio-shot-attractive-caucasian-lady-wearing-denim-clothes.jpg" alt="Modelo 1">
-        </div>
-        <div class="logo-central">
-            <img src="/media/logo/Banner_ModaRenascida.png" alt="Logo">
-        </div>
-        <div class="banner-img">
-            <img src="/media/modelo/fashion-photo-lovely-brunette-woman-spring-outfit-posing-stylish-sunglasses.jpg" alt="Modelo 2">
-        </div>
-        <div class="banner-img">
-            <img src="/media/modelo/close-up-photo-amazing-curly-african-girl-pink-background-wearing-green-trendy-jacket.jpg" alt="Modelo Extra 2">
-        </div>
-    </div>
+        <!--Cabeçalho-->
+        <header class="cabecalho">
+            <!--lado esquerdo-->
+            <div class="cabecalho-esquerda">
+                <!--logo-->
+                <div class="logo">
+                    <a href="/">
+                        <img src="{% static 'logo/Quadrado_ModaRenascida.png' %}" 
+                            alt="Brechó Moda Renascida" 
+                            class="logo-img">
+                    </a>
+                    <p>MODA SUSTENTÁVEL COM PROPÓSITO</p>
+                    <button class="btn-contato">Fale Conosco</button>
+                </div>
 
-    <!-- Seção com contato, mensagem e busca -->
-    <div class="topo-interacao">
-        <!-- Contato -->
-        <div class="contato-bloco">
-            <h2 class="contato-titulo">Fale com a gente!</h2>
-            <p class="contato-texto">Quer ajuda para encontrar o produto ideal?</p>
-            <a class="botao" href="https://wa.me/5581999002431" target="_blank">WhatsApp</a>
-        </div>
-
-        <!-- Mensagem -->
-        <div class="mensagem-central">
-            <p>Moda sustentável com propósito </p>
-            <p>Peças únicas com muito estilo e carinho!</p>
-        </div>
-
-        <!-- Busca -->
-        <form class="busca-form" method="GET" action="">
-            <input type="text" name="q" placeholder="Buscar produto..." value="{{ request.GET.q }}">
-            <button type="submit" class="botao busca">Buscar</button>
-        </form>
-    </div>
-
-    <!-- Galeria de produtos -->
-    <div class="container">
-        {% for produto in produtos %}
-            <div class="produto">
-                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
-                <h2>{{ produto.nome }}</h2>
-                <p>{{ produto.descricao }}</p>
-                <p><strong>R$ {{ produto.preco }}</strong></p>
-                <a class="botao" href="{% url 'produtos:whatsapp_redirect' produto.id %}" target="_blank">
-                    Falar no WhatsApp
-                </a>
+                <!--Barra de navegação-->
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Produtos</a></li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </nav> 
             </div>
-        {% endfor %}
-    </div>
 
-    <!-- Paginação -->
-    <div style="text-align: center; margin-top: 30px;">
-        {% if page_obj.has_previous %}
-            <a class="botao" href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ page_obj.previous_page_number }}">Anterior</a>
-        {% endif %}
+            <!--lado direito-->
+            <div class="cabecalho-direita">
+                <!-- imagem -->
+                <div class="cabecalho-imagem">
+                    <img src="{% static 'logo/mulher-jovem-e-atraente-morena-em-pe-com-as-maos-cruzadas-removebg-preview.png' %}" 
+                        alt="Imagem topo" 
+                        class="img-topo">
+                </div>
+                
+                <!--Campo de busca-->
+                <form class="busca" method="GET" action="">
+                    <input type="search" name="q" placeholder="Buscar produto..." value="{{ request.GET.q }}">
+                    <button type="submit">Buscar🔍</button>
+                </form>
+            </div>
+        </header>
 
-        <span style="margin: 0 10px;">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
 
-        {% if page_obj.has_next %}
-            <a class="botao" href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ page_obj.next_page_number }}">Próxima</a>
-        {% endif %}
+        <main>
+            <!-- Galeria de produtos -->
+            <section class="galeria-produtos"> <!--usando o section para a semantica do conteudo principal-->
+                {% for produto in produtos %}
+                    <article class="produto"> <!-- cada produto é um artigo -->
+                        <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                        <div class="info-produto">   
+                            <h2>{{ produto.nome }}</h2>
+                            <p>{{ produto.descricao }}</p>
+                            <p><strong>R$ {{ produto.preco }}</strong></p>
+                        </div>
+                        <a class="botao" href="{% url 'produtos:whatsapp_redirect' produto.id %}" target="_blank">Falar no WhatsApp</a>
+                    </article>
+                {% endfor %}
+            </section>
+            <!-- Paginação -->
+            <div class="paginacao">
+                {% if page_obj.has_previous %}
+                    <a class="botao" href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ page_obj.previous_page_number }}">Anterior</a>
+                {% endif %}
+
+                <span style="margin: 0 10px;">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+                {% if page_obj.has_next %}
+                    <a class="botao" href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ page_obj.next_page_number }}">Próxima</a>
+                {% endif %}
+            </div>
+        
+        </main>
     </div>
 
 </body>
