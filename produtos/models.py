@@ -10,3 +10,12 @@ class Produto(models.Model):
     def __str__(self):
         return self.nome
     
+# class Cliente(models.Model):
+#     nome = models.CharField(max_length=100)
+#     telefone = models.DecimalField(max_digits=11)
+
+#     def __str__(self):
+#         return f"{self.nome} ({self.telefone})"
+    
+# class Venda(models.Model):
+#     cliente = models.ForeignKey(Cliente)

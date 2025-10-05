@@ -1,0 +1,28 @@
+{% extends "produtos/base.html" %}
+
+{% block title %}Contato - Brechó Moda Renascida{% endblock %}
+
+{% block content %}
+<section class="pagina container">
+    <h1>Entre em Contato</h1>
+    <p>Ficou com alguma dúvida? Quer conhecer mais sobre nossas peças? Fale com a gente!</p>
+
+    <ul>
+        <li><strong>WhatsApp:</strong> <a href="https://wa.me/5581999002431">Clique aqui</a></li>
+        <li><strong>Instagram:</strong> <a href="#">@modarenascida</a></li>
+    </ul>
+
+    <form class="form-contato">
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Mensagem</label>
+        <textarea name="mensagem" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+{% endblock %}

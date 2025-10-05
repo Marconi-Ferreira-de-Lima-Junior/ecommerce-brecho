@@ -14,7 +14,7 @@ def lista_produtos(request):
         # Se o usuário digitou algo, filtra os produtos cujo nome contenha esse texto (sem diferenciar maiúsculas/minúsculas)
 
     # Paginador: quebra a lista em partes
-    paginator = Paginator(produtos, 9)  # Mostra 9 produtos por página
+    paginator = Paginator(produtos, 12)  # Mostra 12 produtos por página
     page_number = request.GET.get('page')  # Verifica em qual página o usuário está
     page_obj = paginator.get_page(page_number)  # Retorna a página atual com os produtos corretos
 
@@ -41,3 +41,14 @@ def whatsapp_redirect(request, produto_id):
     whatsapp_url = f"https://wa.me/5581999002431?text={mensagem_codificada}"
     
     return redirect(whatsapp_url)
+
+def inicio(request): #A página inicial é igual a lista de produtos, vai ser sempre exibido a lista de produtos
+    return lista_produtos(request)
+
+
+def sobre(request): #Redireciona para a pagina SOBRE
+    return render(request, 'produtos/sobre.html')
+
+
+def contato(request): #Redireciona para a pagina CONTATO
+    return render(request, 'produtos/contato.html')

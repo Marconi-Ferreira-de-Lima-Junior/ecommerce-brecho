@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Brechó Moda Renascida{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'produtos/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="cabecalho">
+        <div class="container">
+            <!-- Logo -->
+            <a href="{% url 'produtos:inicio' %}" class="logo">
+                <img src="{% static 'logo/Quadrado_ModaRenascida.png' %}" alt="Brechó Moda Renascida">
+                <span>Moda Renascida</span>
+            </a>
+
+            <!-- Barra de busca -->
+            <form class="busca" method="GET" action="{% url 'produtos:inicio' %}">
+                <input type="search" name="q" placeholder="Buscar produto..." value="{{ request.GET.q }}">
+                <button type="submit">🔍</button>
+            </form>
+
+            <!-- Botão WhatsApp -->
+            <a href="https://wa.me/5581999002431" target="_blank" class="btn-whatsapp">Atendimento</a>
+        </div>
+    </header>
+
+    <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ================= RODAPÉ ================= -->
+    <footer class="rodape">
+        <div class="container rodape-conteudo">
+            <div class="rodape-coluna">
+                <h4>Brechó Moda Renascida</h4>
+                <p>Moda consciente e acessível, dando uma nova vida às suas roupas.</p>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="{% url 'produtos:inicio' %}">Início</a></li>
+                    <li><a href="{% url 'produtos:sobre' %}">Sobre</a></li>
+                    <li><a href="{% url 'produtos:contato' %}">Contato</a></li>
+                </ul>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Contato</h4>
+                <p>📞 (81) 99900-2431</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/modarenascida_brecho/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="rodape-copy">
+            <p>&copy; 2025 Brechó Moda Renascida - Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>
