@@ -15,14 +15,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SEGURANÇA
 # ============================================
 
-# guardar a chave como variável de ambiente.
-SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret')
+DEBUG = True
 
-# O DEBUG deve ficar False em produção.
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Permite o dominio do vercel
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # ============================================
 # APLICAÇÕES
