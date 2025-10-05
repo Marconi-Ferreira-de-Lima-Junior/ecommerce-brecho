@@ -15,7 +15,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SEGURANÇA
 # ============================================
 
-DEBUG = True
+# guardar a chave como variável de ambiente.
+SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret')
+
+# O DEBUG deve ficar False em produção.
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
 # Permite o dominio do vercel
