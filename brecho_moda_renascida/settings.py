@@ -1,32 +1,20 @@
 """
 Django settings for brecho_moda_renascida project.
-Adaptado para deploy na Vercel.
+Adaptado para deploy em Vercel ou Render.
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
-# ============================================
-# CAMINHOS
-# ============================================
+# ==================== BASE ====================
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ============================================
-# SEGURANÇA
-# ============================================
+# ==================== SEGURANÇA ====================
+SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret')  # Definida em variável de ambiente na hospedagem
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*', 'vercel.app', 'localhost', '127.0.0.1')
 
-# guardar a chave como variável de ambiente.
-SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret')
-
-DEBUG = False
-
-
-# Permite o dominio do vercel
-ALLOWED_HOSTS = ['*', 'brechomodarenascida.com']
-
-# ============================================
-# APLICAÇÕES
-# ============================================
+# ==================== APLICAÇÕES ====================
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -34,14 +22,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'produtos',  # app
+    'produtos',  # seu app principal
 ]
 
-# ============================================
-# MIDDLEWARE
-# ============================================
+# ==================== MIDDLEWARE ====================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Necessário para servir estáticos na nuvem
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -50,15 +37,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ============================================
-# CONFIGURAÇÃO DE URL E TEMPLATE
-# ============================================
+# ==================== ROOT ====================
 ROOT_URLCONF = 'brecho_moda_renascida.urls'
 
+# ==================== TEMPLATES ====================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # adiciona suporte a pasta templates 
+        'DIRS': [BASE_DIR / 'templates'],  # opcional, se tiver pasta templates na raiz
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,11 +57,10 @@ TEMPLATES = [
     },
 ]
 
+# ==================== WSGI ====================
 WSGI_APPLICATION = 'brecho_moda_renascida.wsgi.application'
 
-# ============================================
-# BANCO DE DADOS
-# ============================================
+# ==================== BANCO DE DADOS ====================
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -83,34 +68,27 @@ DATABASES = {
     }
 }
 
-# ============================================
-# SENHAS
-# ============================================
+# ==================== VALIDAÇÃO DE SENHA ====================
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
-# ============================================
-# LOCALIZAÇÃO
-# ============================================
+# ==================== INTERNACIONALIZAÇÃO ====================
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Recife'
 USE_I18N = True
 USE_TZ = True
 
-# ============================================
-# ARQUIVOS ESTÁTICOS E MÍDIA
-# ============================================
+# ==================== ARQUIVOS ESTÁTICOS E MÍDIA ====================
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # <- Adicionado para produção
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# ============================================
-# PADRÃO DE CHAVES
-# ============================================
+# ==================== PADRÃO ====================
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
