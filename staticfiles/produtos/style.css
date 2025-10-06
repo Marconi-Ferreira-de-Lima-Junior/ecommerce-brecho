@@ -1,0 +1,434 @@
+/* ================= BASE ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ================= HEADER ================= */
+.cabecalho {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.cabecalho .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #e91e63;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #e91e63;
+}
+
+.busca {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    margin: 0 20px;
+}
+
+.busca input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px 0 0 6px;
+}
+
+.busca button {
+    padding: 8px 16px;
+    border: none;
+    background: #e91e63;
+    color: #fff;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.btn-whatsapp {
+    background: #25d366;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-whatsapp:hover {
+    background: #20b955;
+}
+
+/* ================= HERO ================= */
+.hero {
+    background: url('../logo/banner-brecho.jpg') center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.hero-texto {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.botao-hero {
+    background: #e91e63;
+    padding: 12px 20px;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ================= PRODUTOS ================= */
+h2 {
+    margin: 40px 0 20px;
+    text-align: center;
+    color: #b45d7a;
+    font-family: 'Cinzel', serif;
+}
+
+.galeria-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.produto {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+}
+
+.produto-img {
+    position: relative;
+    height: 250px;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.produto-img img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.tag-novo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #e91e63;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.info-produto {
+    padding: 15px;
+    text-align: center;
+}
+
+.info-produto h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.preco {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e91e63;
+    margin-bottom: 10px;
+}
+
+.descricao {
+    font-size: 0.9rem;
+    color: #666;
+    min-height: 40px;
+    margin-bottom: 12px;
+}
+
+.botao {
+    background: #25d366;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.botao:hover {
+    background: #20b955;
+}
+
+/* ================= PAGINAÇÃO ================= */
+.paginacao {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.paginacao span {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* ================= RODAPÉ ================= */
+.rodape {
+    background: #333;
+    color: #fff;
+    margin-top: 40px;
+    padding: 40px 20px 10px;
+}
+
+.rodape-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.rodape-coluna h4 {
+    margin-bottom: 10px;
+    color: #e91e63;
+}
+
+.rodape-coluna ul {
+    list-style: none;
+}
+
+.rodape-coluna ul li {
+    margin-bottom: 6px;
+}
+
+.rodape-coluna a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.rodape-coluna a:hover {
+    color: #e91e63;
+}
+
+.social a {
+    display: block;
+    margin-top: 5px;
+}
+
+.rodape-copy {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #555;
+    padding-top: 10px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* ===== Páginas internas ===== */
+.pagina {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.pagina h1 {
+    margin-bottom: 20px;
+    color: #e91e63;
+}
+
+.pagina p {
+    text-align: justify;
+}
+
+.form-contato {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-contato input,
+.form-contato textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-contato button {
+    margin-top: 15px;
+    padding: 10px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ===== Listas de contato ===== */
+.pagina ul {
+    list-style: none; /* Remove as bolinhas */
+    margin: 20px 0;
+    padding: 0;
+}
+
+.pagina ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.pagina ul li strong {
+    color: #e91e63; /* Destaque para o título (WhatsApp, Email, etc.) */
+}
+
+.pagina ul li a {
+    color: #25D366; /* Links em verde (WhatsApp style) */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pagina ul li a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= RESPONSIVIDADE COMPLETA ================= */
+@media (max-width: 768px) {
+    /* Header */
+    .cabecalho .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .busca {
+        max-width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+        height: 300px;
+        padding: 20px;
+    }
+
+    /* Rodapé */
+    .rodape-conteudo {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Galeria de produtos */
+    .galeria-produtos {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+    }
+
+    /* Botões dentro da galeria e hero */
+    .botao, .botao-hero, .btn-whatsapp {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    /* Formulário de contato */
+    .form-contato input,
+    .form-contato textarea {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+/* Ajustes para celulares bem pequenos */
+@media (max-width: 480px) {
+    /* Galeria de produtos: uma coluna só */
+    .galeria-produtos {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* Hero: altura menor e fonte reduzida */
+    .hero {
+        height: 250px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Página interna (sobre/contato) */
+    .pagina {
+        padding: 15px;
+    }
+
+    /* Footer */
+    .rodape-conteudo {
+        gap: 15px;
+    }
+}
+

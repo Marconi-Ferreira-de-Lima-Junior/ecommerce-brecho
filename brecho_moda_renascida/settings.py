@@ -12,7 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ==================== SEGURANÇA ====================
 SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret')  # Definida em variável de ambiente na hospedagem
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*', 'vercel.app', 'localhost', '127.0.0.1')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*,.vercel.app,localhost,127.0.0.1').split(',')
+
 
 # ==================== APLICAÇÕES ====================
 INSTALLED_APPS = [
